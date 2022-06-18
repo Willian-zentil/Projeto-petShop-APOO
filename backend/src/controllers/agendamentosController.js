@@ -4,7 +4,7 @@ class AgendamentosController {
     async listarAgendamentos(req, res){
         try{
             const listaDeAgendamentos = await Agendamento.findAll(
-                {include: [{model: Pet, attributes: ["name"], include: [{model: Cliente, attributes: ["name"]}]}],
+                {include: [{model: Pet, attributes: ["id", "name"], include: [{model: Cliente, attributes: ["id", "name"]}]}],
                 attributes: ['id', 'agendamentoDate', 'agendamentoTypePayment', 'agendamentoTypeService', 'agendamentoValueService']}   
             )
             
