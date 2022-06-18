@@ -45,21 +45,40 @@ function cadAgendamento(){
         "clienteId": idClientAgenda
     }
 
-    const url = "http://localhost:4000/agendamentos"
-
-    fazpost(url, body)
+    fazpost(body)
 }
 
-function fazpost (url, body){
-    console.log("Body=", body)
-    let request = new XMLHttpRequest()
-    request.open("POST", url, true)
-    request.setRequestHeader("Content-type", "application/json")
-    request.send(JSON.stringify(body))
+//cadastra cliente
+function cadCliente(){
+    event.preventDefault();
+    const form = document.getElementById('cadCliente')
 
-    request.onload = function() {
-        console.log(this.responseText)
+    let clienteId = document.getElementById("clienteId").value
+    let clienteName = document.getElementById("clienteName").value
+    let clienteCpf = document.getElementById("clienteCpf").value 
+    let clientePhone = document.getElementById("clientePhone").value 
+
+    body = {
+        "clienteId": clienteId,
+        "clienteName": clienteName,
+        "clienteCpf": clienteCpf,
+        "clientePhone": clientePhone,
     }
 
-    return request.responseText
+    console.table(body)
+
+    fazpost(body)
+}
+
+//post
+function fazpost (body){
+    const options = {
+        method: 'POST',
+        body: Object.keys(body)
+    }
+
+    fetch('http://localhost:4000/agendamentos', options)
+        .then(T => T.json())
+        .then(console.log)
+        .catch(err => console.log(err.message))
 }

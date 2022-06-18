@@ -62,7 +62,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item active" href="blank.html">Blank Page</a>
+                        <a class="collapse-item active" href="clientes.html">Clientes</a>
                     </div>
                 </div>
             </li>
@@ -292,8 +292,105 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
-
+                    <h1 class="h3 mb-4 text-gray-800">Clientes</h1>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <!-- Earnings (Monthly) Card Example -->
+                            <div class="col">
+                                <section style="background-color: #eee;">
+                                    <div class="container py-5 h-100">
+                                    <div class="row d-flex justify-content-center align-items-center h-100">
+                                        <div class="col col-lg-9 col-xl-7">
+                                        <div class="card rounded-3">
+                                            <div class="card-body p-4">
+                                
+                                            <h4 class="text-center my-3 pb-3">Todos clientes</h4>
+                                
+                                            <table class="table mb-4">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">N°.</th>
+                                                    <th scope="col">item</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Ação</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>Buy groceries for next week</td>
+                                                    <td>In progress</td>
+                                                    <td>
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">2</th>
+                                                    <td>Renew car insurance</td>
+                                                    <td>In progress</td>
+                                                    <td>
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">3</th>
+                                                    <td>Sign up for online course</td>
+                                                    <td>In progress</td>
+                                                    <td>
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <section style="background-color: #eee;">
+                                    <div class="container py-5 h-100">
+                                      <div class="row d-flex justify-content-center align-items-center h-100">
+                                        <div class="col col-lg-9 col-xl-7">
+                                          <div class="card rounded-3">
+                                            <div class="card-body p-4">
+                                              <h4 class="text-center my-3 pb-3">Cadastrar novo cliente</h4>
+        
+                                              <form onsubmit="cadCliente(event)" id="cadCliente">
+                                                <div class="row">
+                                                  <div class="col">
+                                                    <input type="number" class="form-control" id="clienteId" placeholder="id cliente">
+                                                  </div>
+                                                  <div class="col">
+                                                    <input type="text" class="form-control" id="clienteName" placeholder="Nome cliente">
+                                                  </div>
+                                                </div>
+                                                <div class="row" style="margin-top: 20px;">
+                                                    <div class="col">
+                                                      <input type="text" class="form-control" id="clienteCpf" placeholder="CPF">
+                                                    </div>
+                                                    <div class="col">
+                                                      <input type="text" class="form-control" id="clientePhone" placeholder="Telefone">
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex justify-content-center mt-12" style="margin-top: 30px;">
+                                                    <input class="btn btn-primary btn-sm" type="submit">
+                                                  </div>
+                                              </form>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -344,6 +441,7 @@
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../assets/index.js"></script>
 
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
