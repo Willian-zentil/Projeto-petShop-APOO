@@ -60,8 +60,8 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
-                        <a class="collapse-item active" href="404.html">404 Page</a>
+                        <a class="collapse-item" href="blank.html">clientes</a>
+                        <a class="collapse-item active" href="404.html">pets</a>
                     </div>
                 </div>
             </li>
@@ -354,6 +354,54 @@
                             </section>
                         </div>
                 </div>
+
+                <div class="row">
+                    <div class="col">
+                        <section style="background-color: #eee;">
+                            <div class="container py-5 h-100">
+                              <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col col-lg-9 col-xl-7">
+                                  <div class="card rounded-3">
+                                    <div class="card-body p-4">
+                                      <h4 class="text-center my-3 pb-3">Cadastrar Agendamento</h4>
+
+                                      <form onsubmit="cadAgendamento(event)" id="cadAgendamento">
+                                        <div class="row">
+                                          <div class="col">
+                                            <input type="number" class="form-control" id="idAgenda" placeholder="id agendamento">
+                                          </div>
+                                          <div class="col">
+                                            <input type="date" class="form-control" id="dataAgenda" placeholder="Data da consulta">
+                                          </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 20px;">
+                                            <div class="col">
+                                              <input type="text" class="form-control" id="tipoPagAgenda" placeholder="Tipo de pagamento">
+                                            </div>
+                                            <div class="col">
+                                              <input type="text" class="form-control" id="typeAgenda" placeholder="Tipo de serviço">
+                                            </div>
+                                          </div>
+                                          <div class="row" style="margin-top: 20px;">
+                                            <div class="col">
+                                              <input type="number" step="0.01" class="form-control" id="serviceAgenda" placeholder="valor do serviço">
+                                            </div>
+                                            <div class="col">
+                                              <input type="number" class="form-control" id="idClientAgenda" placeholder="id cliente">
+                                            </div>
+                                          </div>
+                                          <div class="d-flex justify-content-center mt-12" style="margin-top: 30px;">
+                                            <input class="btn btn-primary btn-sm" type="submit">
+                                          </div>
+                                      </form>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
                 <!-- /.container-fluid -->
 
             </div>
@@ -406,6 +454,7 @@
 
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="../assets/index.js"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
