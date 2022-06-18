@@ -18,7 +18,10 @@ class AgendamentosController {
     async listarAgendamentoById(req, res){
         const { id } = req.params;
         try {
-            const agendamentoBD = await Agendamento.findByPk(id);
+            const agendamentoBD = await Agendamento.findByPk(id,
+                {include: [{model: Pet, attributes: ["id", "name"], include: [{model: Cliente, attributes: ["id", "name"]}]}],
+                attributes: ['id', 'agendamentoDate', 'agendamentoTypePayment', 'agendamentoTypeService', 'agendamentoValueService']}
+            );
             if(!agendamentoBD){
                 return res.status(404).json(`Não existe agendamento com o id ${id}`);
             }
