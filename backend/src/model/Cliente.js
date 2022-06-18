@@ -1,8 +1,6 @@
 const db = require("../database")
 const { DataTypes } = require("sequelize")
 
-const Pet = require("./Pet")
-
 const Cliente = db.define(
     "Cliente", {
         id: {
@@ -24,15 +22,6 @@ const Cliente = db.define(
             type: DataTypes.STRING,
             field: "clientePhone"
         },
-        petId: {
-            type: DataTypes.INTEGER,
-            field: "petId",
-            references: {
-              model: Pet,
-              key: "petId"
-            },
-            field: "petId"
-        }
     }, {
         tableName: "Cliente",
         timestamps: false

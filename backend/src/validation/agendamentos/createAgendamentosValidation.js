@@ -2,7 +2,8 @@ const {validate, Joi} = require ('express-validation');
 
 module.exports = validate ({
     body: Joi.object({
-        clienteId: Joi.number().required(),
+        
+        petId: Joi.number().required(),
         agendamentoDate: Joi.date().required(),
         agendamentoTypePayment: Joi.string().required(),
         agendamentoTypeService: Joi.string().required(),

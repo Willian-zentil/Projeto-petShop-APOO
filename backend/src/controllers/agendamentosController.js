@@ -1,10 +1,10 @@
-const { Agendamento, Cliente } = require("../model");
+const { Agendamento, Cliente, Pet } = require("../model");
 
 class AgendamentosController {
     async listarAgendamentos(req, res){
         try{
             const listaDeAgendamentos = await Agendamento.findAll(
-                {include: [{model: Cliente, attributes: ["name", "phone"]}],
+                {include: [{model: Pet, attributes: ["name"], include: [{model: Cliente, attributes: ["name"]}]}],
                 attributes: ['id', 'agendamentoDate', 'agendamentoTypePayment', 'agendamentoTypeService', 'agendamentoValueService']}   
             )
             
@@ -30,8 +30,8 @@ class AgendamentosController {
 
     async cadastrarAgendamento(req, res) {
         try {
-            const { clienteId, agendamentoDate, agendamentoTypePayment, agendamentoTypeService, agendamentoValueService } = req.body;
-            const novoAgendamento = await Agendamento.create({clienteId, agendamentoDate, agendamentoTypePayment, agendamentoTypeService, agendamentoValueService});
+            const { petId, agendamentoDate, agendamentoTypePayment, agendamentoTypeService, agendamentoValueService } = req.body;
+            const novoAgendamento = await Agendamento.create({petId, agendamentoDate, agendamentoTypePayment, agendamentoTypeService, agendamentoValueService});
             return res.status(201).json(novoAgendamento);
         } catch (error) {
             res.status(400).json('Não foi possivel cadastrar o agendamento');

@@ -2,6 +2,7 @@ const db = require("../database");
 const { DataTypes } = require("sequelize");
 
 const Cliente  = require("./Cliente");
+const Pet  = require("./Pet");
 
 const Agendamento = db.define(
     "Agendamento", {
@@ -34,6 +35,14 @@ const Agendamento = db.define(
               key: "id"
           },
           field: "clienteId"
+        },
+        petId: {
+          type: DataTypes.INTEGER,
+          references: {
+              model: Pet,
+              key: "id"
+          },
+          field: "petId"
         }
     }, {
         tableName: "Agendamento",

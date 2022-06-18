@@ -3,12 +3,16 @@ const Atendente = require("./Atendente");
 const Pet = require("./Pet");
 const Agendamento = require("./Agendamento");
  
-Cliente.belongsTo(Pet, {
-    foreignKey: "petId",
+Pet.belongsTo(Cliente, {
+    foreignKey: "clienteId",
 })
 
 Agendamento.belongsTo(Cliente, {
     foreignKey: "clienteId",
+})
+
+Agendamento.belongsTo(Pet, {
+    foreignKey: "petId",
 })
 
  

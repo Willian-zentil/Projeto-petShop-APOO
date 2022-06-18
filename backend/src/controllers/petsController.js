@@ -1,10 +1,15 @@
-const { Pet } = require("../model")
+const { Pet, Cliente } = require("../model")
 
 class PetsController {
     
     async listarPets(req, res){
         try {
-            const listaDePets = await Pet.findAll();
+            const listaDePets = await Pet.findAll(
+                {
+                    include: [{model: Cliente, attributes: ["name", "cpf", "phone"]}],
+                },
+                {attributes: ['id', 'name']}
+            );
             res.status(200).json(listaDePets)
 
         } catch (error) {
@@ -28,8 +33,8 @@ class PetsController {
 
     async cadastrarPet(req, res){
         try {
-            const { name } = req.body
-            const novoPet = await Pet.create({name})
+            const { clienteId, name } = req.body
+            const novoPet = await Pet.create({clienteId, name})
             return res.status(201).json(novoPet)
 
         } catch (error) {
@@ -59,9 +64,9 @@ class PetsController {
     async atualizarPet (req, res) {
         const { id } = req.params
         try {
-            const { name } = req.body
+            const { clienteId, name } = req.body
             const atualizarPet = await Pet.update(
-                {name}, 
+                {clienteId, name}, 
                 {
                 where: {
                     id
