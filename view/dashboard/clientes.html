@@ -61,7 +61,7 @@
                 <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="404.html">404 Page</a>
+                        <a class="collapse-item" href="pets.html">pets</a>
                         <a class="collapse-item active" href="clientes.html">Clientes</a>
                     </div>
                 </div>
@@ -309,9 +309,9 @@
                                             <table class="table mb-4">
                                                 <thead>
                                                 <tr>
-                                                    <th scope="col">N°.</th>
-                                                    <th scope="col">item</th>
-                                                    <th scope="col">Status</th>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Nome</th>
+                                                    <th scope="col">Tel</th>
                                                     <th scope="col">Ação</th>
                                                 </tr>
                                                 </thead>
@@ -321,23 +321,7 @@
                                                     <td>Buy groceries for next week</td>
                                                     <td>In progress</td>
                                                     <td>
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Renew car insurance</td>
-                                                    <td>In progress</td>
-                                                    <td>
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>Sign up for online course</td>
-                                                    <td>In progress</td>
-                                                    <td>
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                        <button type="submit" class="btn btn-danger">Delete</button>
                                                     </td>
                                                 </tr>
                                                 </tbody>
@@ -363,9 +347,6 @@
         
                                               <form onsubmit="cadCliente(event)" id="cadCliente">
                                                 <div class="row">
-                                                  <div class="col">
-                                                    <input type="number" class="form-control" id="clienteId" placeholder="id cliente">
-                                                  </div>
                                                   <div class="col">
                                                     <input type="text" class="form-control" id="clienteName" placeholder="Nome cliente">
                                                   </div>
