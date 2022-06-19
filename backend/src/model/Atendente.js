@@ -1,30 +1,34 @@
-const db = require("../database")
-const { DataTypes } = require("sequelize")
+const db = require("../database");
+const { DataTypes, Model } = require("sequelize");
 
-const Atendente = db.define(
-    "Atendente", {
-        id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true,
-            field: "atendenteId"
-        },
-        name: {
-            type: DataTypes.STRING,
-            field: "atendenteName"
-        },
-        email:{
-            type: DataTypes.STRING,
-            field: "atendenteEmail"
-        },
-        password:{
-            type: DataTypes.STRING,
-            field: "atendentePassword"
-        }
-    }, {
-        tableName: "Atendente",
-        timestamps: false
-    }
-)
+class Atendente extends Model {}
+Atendente.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      field: "atendenteId",
+    },
+    name: {
+      type: DataTypes.STRING,
+      field: "atendenteName",
+    },
+    email: {
+      type: DataTypes.STRING,
+      field: "atendenteEmail",
+    },
+    password: {
+      type: DataTypes.STRING,
+      field: "atendentePassword",
+    },
+  },
+  {
+    modelName: "Atendente",
+    timestamps: false,
+    sequelize: db,
+    freezeTableName: true
+  }
+);
 
-module.exports = Atendente
+module.exports = Atendente;

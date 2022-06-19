@@ -38,7 +38,8 @@ routes.post('/login', loginValidation, authController.login)
 routes.get('/agendamentos', AgendamentosController.listarAgendamentos)
 routes.get('/agendamentos/:id', AgendamentosController.listarAgendamentoById)
 routes.post('/agendamentos', createAgendamentosValidation, AgendamentosController.cadastrarAgendamento)
-
+routes.delete('/agendamentos/:id', AgendamentosController.deletarAgendamento)
+routes.put('/agendamentos/:id', AgendamentosController.atualizarAgendamento)
 
 
 module.exports = routes
