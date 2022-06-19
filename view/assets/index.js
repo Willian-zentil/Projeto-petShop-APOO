@@ -55,27 +55,44 @@ function cadCliente(){
     document.getElementById("clientePhone").value=''; 
 }
 
+//busca cliente
+function buscaClient() {
+    event.preventDefault();
+
+    let id = document.getElementById("clientId").value
+
+    if(id){
+        fetch('http://localhost:4000/clientes/'+id)
+        .then(resp => resp.json())
+        .then(function(resp) {
+            document.querySelector('.card-body.results.p-4').classList.remove('d-none')
+
+            console.log(resp)
+            document.querySelector('.card-body.results.p-4 #listaClientId').innerHTML = resp.id
+            document.querySelector('.card-body.results.p-4 #listaClientName').innerHTML = resp.name
+            document.querySelector('.card-body.results.p-4 #listaClientCpf').innerHTML = resp.cpf
+            document.querySelector('.card-body.results.p-4 #listaClientPhone').innerHTML = resp.phone
+        })
+    }
+}
 //buscar pet
 function buscaPet() {
     event.preventDefault();
 
     let id = document.getElementById("petId").value
 
-    fetch('http://localhost:4000/pets/'+id)
-    .then(resp => resp.json())
-    .then(function(resp) {
-        document.querySelector('.card-body.results.p-4').classList.remove('d-none')
-
-        console.log(resp)
-        document.querySelector('.card-body.results.p-4 #listaPetId').innerHTML = resp.id
-        document.querySelector('.card-body.results.p-4 #listaPetName').innerHTML = resp.name
-        document.querySelector('.card-body.results.p-4 #listaPetDonoID').innerHTML = resp.clienteId
-    })
-}
-
-//lista cliente
-function getClients(){
-    //
+    if(id){
+        fetch('http://localhost:4000/pets/'+id)
+        .then(resp => resp.json())
+        .then(function(resp) {
+            document.querySelector('.card-body.results.p-4').classList.remove('d-none')
+    
+            console.log(resp)
+            document.querySelector('.card-body.results.p-4 #listaPetId').innerHTML = resp.id
+            document.querySelector('.card-body.results.p-4 #listaPetName').innerHTML = resp.name
+            document.querySelector('.card-body.results.p-4 #listaPetDonoID').innerHTML = resp.clienteId
+        })
+    }
 }
 
 //cadastra pet
@@ -99,6 +116,23 @@ function cadPet(){
 
     document.getElementById("clientPetId").value=''; 
     document.getElementById("petName").value='';
+}
+
+//deletar pet
+function deletPet(){
+    event.preventDefault();
+
+    let petId = parseInt(document.getElementById('listaPetId').innerText);
+
+    const options = {
+        method: 'DELETE',
+        body: JSON.stringify({
+            id: petId
+        }),
+        headers: {'Content-Type': 'application/json'}
+    }
+
+    fetchApiDelete(options, petId, 'pets')
 }
 
 window.onload = function () {
@@ -125,7 +159,7 @@ window.onload = function () {
 //fetch
 function fetchApiPost(options, url) {
     fetch('http://localhost:4000/'+url, options)
-        .then(resp => console.log(resp))
+        .then(response => response)
         .then(function(response) {
                 if(response.ok){
                     alert("Ação realizada com sucesso")
@@ -141,4 +175,13 @@ function fetchApiGet(options) {
         .then(function(resp) {
             return resp
         })
+}
+
+function fetchApiDelete(options,id, url) {
+    fetch('http://localhost:4000/'+url+'/'+id, options)
+        .then(response => response)
+        .then(()=> {
+            document.querySelector('.card-body.results.p-4').classList.add('d-none')
+        })
+        .catch(console.error);
 }

@@ -328,26 +328,28 @@
                                                     </form>
                                                 </div>
                                                 <div class="card-body results p-4 d-none">
-                                                    <table class="table mb-4">
-                                                        <thead>
-                                                        <tr>
-                                                            <th scope="col">ID</th>
-                                                            <th scope="col">Nome</th>
-                                                            <th scope="col">Dono Id</th>
-                                                            <th scope="col">Ação</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <tr>
-                                                            <th scope="row" id="listaPetId"></th>
-                                                            <td id="listaPetName"></td>
-                                                            <td id="listaPetDonoID"></td>
-                                                            <td>
-                                                                <button id="listaPetRemove" type="submit" class="btn btn-danger">Delete</button>
-                                                            </td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
+                                                    <form onsubmit="deletPet()">
+                                                        <table class="table mb-4">
+                                                            <thead>
+                                                            <tr>
+                                                                <th scope="col">ID</th>
+                                                                <th scope="col">Nome</th>
+                                                                <th scope="col">Dono Id</th>
+                                                                <th scope="col">Ação</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <th scope="row" id="listaPetId"></th>
+                                                                <td id="listaPetName"></td>
+                                                                <td id="listaPetDonoID"></td>
+                                                                <td>
+                                                                    <button id="listaPetRemove" type="submit" class="btn btn-danger">Delete</button>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </form>
                                                 </div>
                                             </div>
                                             </div>
