@@ -75,6 +75,24 @@ function buscaClient() {
         })
     }
 }
+
+//deletar cliente
+function deletClient(){
+    event.preventDefault();
+
+    let clientId = parseInt(document.getElementById('listaClientId').innerText);
+
+    const options = {
+        method: 'DELETE',
+        body: JSON.stringify({
+            id: clientId
+        }),
+        headers: {'Content-Type': 'application/json'}
+    }
+
+    fetchApiDelete(options, clientId, 'clientes')
+}
+
 //buscar pet
 function buscaPet() {
     event.preventDefault();
