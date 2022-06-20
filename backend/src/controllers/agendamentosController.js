@@ -17,6 +17,7 @@ class AgendamentosController {
           "agendamentoTypePayment",
           "agendamentoTypeService",
           "agendamentoValueService",
+          "agendamentoIsPaid"
         ],
       });
 
@@ -44,6 +45,7 @@ class AgendamentosController {
           "agendamentoTypePayment",
           "agendamentoTypeService",
           "agendamentoValueService",
+          "agendamentoIsPaid"
         ],
       });
       if (!agendamentoBD) {
@@ -63,6 +65,7 @@ class AgendamentosController {
         agendamentoTypePayment,
         agendamentoTypeService,
         agendamentoValueService,
+        agendamentoIsPaid
       } = req.body;
       const novoAgendamento = await Agendamento.create({
         petId,
@@ -70,6 +73,7 @@ class AgendamentosController {
         agendamentoTypePayment,
         agendamentoTypeService,
         agendamentoValueService,
+        agendamentoIsPaid
       });
       return res.status(201).json(novoAgendamento);
     } catch (error) {
@@ -104,6 +108,7 @@ class AgendamentosController {
         agendamentoTypePayment,
         agendamentoTypeService,
         agendamentoValueService,
+        agendamentoIsPaid
       } = req.body;
       const atualizarAgendamento = await Agendamento.update(
         {
@@ -112,6 +117,7 @@ class AgendamentosController {
           agendamentoTypePayment,
           agendamentoTypeService,
           agendamentoValueService,
+          agendamentoIsPaid
         },
         { where: { id } }
       );

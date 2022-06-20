@@ -7,6 +7,7 @@ module.exports = validate ({
         agendamentoDate: Joi.date().required(),
         agendamentoTypePayment: Joi.string().required(),
         agendamentoTypeService: Joi.string().required(),
-        agendamentoValueService: Joi.number().required()
+        agendamentoValueService: Joi.number().required(),
+        agendamentoIsPaid: Joi.boolean().required()
     })
 })

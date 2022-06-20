@@ -29,6 +29,10 @@ Agendamento.init(
       type: DataTypes.FLOAT,
       field: "agendamentoValueService",
     },
+    agendamentoIsPaid: {
+      type: DataTypes.BOOLEAN,
+      field: "agendamentoIsPaid",
+    },
     clienteId: {
       type: DataTypes.INTEGER,
       references: {
