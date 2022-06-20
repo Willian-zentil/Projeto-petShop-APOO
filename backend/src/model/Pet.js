@@ -29,7 +29,7 @@ Pet.init(
     tableName: "Pet",
     timestamps: false,
     sequelize: db,
-    freezeTableName: true
+    freezeTableName: true,
   }
 );
 
