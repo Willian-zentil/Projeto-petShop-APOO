@@ -59,28 +59,37 @@ function cadCliente(){
 function buscaClient() {
     event.preventDefault();
 
-    let id = document.getElementById("clientId").value
+    fetch('http://localhost:4000/clientes/')
+    .then(resp => resp.json())
+    .then(function(resp) {
+        let list = document.querySelector('.card-body.results.p-4 tbody')
 
-    if(id){
-        fetch('http://localhost:4000/clientes/'+id)
-        .then(resp => resp.json())
-        .then(function(resp) {
-            document.querySelector('.card-body.results.p-4').classList.remove('d-none')
+        while (list.hasChildNodes()) {
+            list.removeChild(list.firstChild);
+          }
 
-            console.log(resp)
-            document.querySelector('.card-body.results.p-4 #listaClientId').innerHTML = resp.id
-            document.querySelector('.card-body.results.p-4 #listaClientName').innerHTML = resp.name
-            document.querySelector('.card-body.results.p-4 #listaClientCpf').innerHTML = resp.cpf
-            document.querySelector('.card-body.results.p-4 #listaClientPhone').innerHTML = resp.phone
-        })
-    }
+        document.querySelector('.card-body.results.p-4').classList.remove('d-none')
+
+        resp.forEach(resp => {
+            const html = htmlToElement(`
+            <tr>
+                <th scope="row" id="listaClientId">${resp.id}</th>
+                <td id="listaClientName">${resp.name}</td>
+                <td id="listaClientCpf">${resp.cpf}</td>
+                <td id="listaClientPhone">${resp.phone}</td>
+                <td>
+                    <button id="listaPetRemove" onclick="deletClient(this)" type="submit" class="btn btn-danger" data-id-type="${resp.id}">Delete</button>
+                </td>
+            </tr>`)
+            document.querySelector('.card-body.results.p-4 tbody').append(html)
+        });
+    })
 }
 
 //deletar cliente
-function deletClient(){
+function deletClient(id){
     event.preventDefault();
-
-    let clientId = parseInt(document.getElementById('listaClientId').innerText);
+    let clientId = id.getAttribute("data-id-type");
 
     const options = {
         method: 'DELETE',
@@ -97,20 +106,38 @@ function deletClient(){
 function buscaPet() {
     event.preventDefault();
 
-    let id = document.getElementById("petId").value
-
-    if(id){
-        fetch('http://localhost:4000/pets/'+id)
+        fetch('http://localhost:4000/pets/')
         .then(resp => resp.json())
         .then(function(resp) {
+            let list = document.querySelector('.card-body.results.p-4 tbody')
+
+            while (list.hasChildNodes()) {
+                list.removeChild(list.firstChild);
+              }
+
             document.querySelector('.card-body.results.p-4').classList.remove('d-none')
     
-            console.log(resp)
-            document.querySelector('.card-body.results.p-4 #listaPetId').innerHTML = resp.id
-            document.querySelector('.card-body.results.p-4 #listaPetName').innerHTML = resp.name
-            document.querySelector('.card-body.results.p-4 #listaPetDonoID').innerHTML = resp.clienteId
+            resp.forEach(resp => {
+                const html = htmlToElement(`
+                <tr>
+                    <th scope="row" id="listaPetId">${resp.id}</th>
+                    <td id="listaPetName">${resp.name}</td>
+                    <td id="listaPetDonoID">${resp.clienteId}</td>
+                    <td>
+                        <button id="listaPetRemove" onclick="deletPet(this)" type="submit" class="btn btn-danger" data-id-type="${resp.id}">Delete</button>
+                    </td>
+                </tr>`)
+                document.querySelector('.card-body.results.p-4 tbody').append(html)
+            });
         })
-    }
+
+}
+
+function htmlToElement(html) {
+    var template = document.createElement('template');
+    html = html.trim(); // Never return a text node of whitespace as the result
+    template.innerHTML = html;
+    return template.content.firstChild;
 }
 
 //cadastra pet
@@ -137,10 +164,9 @@ function cadPet(){
 }
 
 //deletar pet
-function deletPet(){
+function deletPet(id){
     event.preventDefault();
-
-    let petId = parseInt(document.getElementById('listaPetId').innerText);
+    let petId = id.getAttribute("data-id-type");
 
     const options = {
         method: 'DELETE',
@@ -196,6 +222,7 @@ function fetchApiGet(options) {
 }
 
 function fetchApiDelete(options,id, url) {
+    console.log('http://localhost:4000/'+url+'/'+id, options)
     fetch('http://localhost:4000/'+url+'/'+id, options)
         .then(response => response)
         .then(()=> {

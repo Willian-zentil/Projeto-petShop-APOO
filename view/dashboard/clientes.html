@@ -97,32 +97,26 @@
                                 <section style="background-color: #eee;">
                                     <div class="container py-5 h-100">
                                     <div class="row d-flex justify-content-center align-items-center h-100">
-                                        <div class="col col-lg-12 col-xl-7">
+                                        <div class="col col-lg-12 col-xl-12">
                                         <div class="card rounded-3">
                                             <div class="card-body p-4">
                                 
-                                                <h4 class="text-center my-3 pb-3">Listar cliente por ID</h4>
+                                                <h4 class="text-center my-3 pb-3">Listar clientes</h4>
                                     
                                                 <form onsubmit="buscaClient(event)">
                                                     <table class="table mb-4">
-                                                        <thead>
-                                                            <tr>
-                                                                <th scope="col">ID Cliente</th>
-                                                            </tr>
-                                                        </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <th scope="row">
-                                                                    <input type="text" class="form-control" id="clientId">
-                                                                </th>
+                                                                <td scope="row" style="text-align: center;">
+                                                                    <input class="btn btn-primary btn-sm" type="submit" value="Buscar">
+                                                                </td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
-                                                    <input class="btn btn-primary btn-sm" type="submit" value="Buscar">
                                                 </form>
                                             </div>
                                             <div class="card-body results p-4 d-none">
-                                                <form onsubmit="deletClient()">
+                                                <form>
                                                     <table class="table mb-4">
                                                         <thead>
                                                         <tr>
@@ -133,17 +127,7 @@
                                                             <th scope="col">Ação</th>
                                                         </tr>
                                                         </thead>
-                                                        <tbody>
-                                                        <tr>
-                                                            <th scope="row" id="listaClientId"></th>
-                                                            <td id="listaClientName"></td>
-                                                            <td id="listaClientCpf"></td>
-                                                            <td id="listaClientPhone"></td>
-                                                            <td>
-                                                                <button id="listaClientRemove" type="submit" class="btn btn-danger">Delete</button>
-                                                            </td>
-                                                        </tr>
-                                                        </tbody>
+                                                        <tbody></tbody>
                                                     </table>
                                                 </form>
                                             </div>
@@ -159,7 +143,7 @@
                                 <section style="background-color: #eee;">
                                     <div class="container py-5 h-100">
                                       <div class="row d-flex justify-content-center align-items-center h-100">
-                                        <div class="col col-lg-12 col-xl-7">
+                                        <div class="col col-lg-12 col-xl-12">
                                           <div class="card rounded-3">
                                             <div class="card-body p-4">
                                               <h4 class="text-center my-3 pb-3">Cadastrar novo cliente</h4>

@@ -105,12 +105,7 @@
                                                     <h4 class="text-center my-3 pb-3">Buscar pet</h4>
 
                                                     <form onsubmit="buscaPet(event)">
-                                                        <table class="table mb-4">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th scope="col">ID Pet</th>
-                                                                </tr>
-                                                            </thead>
+                                                        <table class="table mb-4" style="display: none;">
                                                             <tbody>
                                                                 <tr>
                                                                     <th scope="row">
@@ -124,7 +119,7 @@
                                                     </form>
                                                 </div>
                                                 <div class="card-body results p-4 d-none">
-                                                    <form onsubmit="deletPet()">
+                                                    <form>
                                                         <table class="table mb-4">
                                                             <thead>
                                                             <tr>
@@ -134,16 +129,7 @@
                                                                 <th scope="col">Ação</th>
                                                             </tr>
                                                             </thead>
-                                                            <tbody>
-                                                            <tr>
-                                                                <th scope="row" id="listaPetId"></th>
-                                                                <td id="listaPetName"></td>
-                                                                <td id="listaPetDonoID"></td>
-                                                                <td>
-                                                                    <button id="listaPetRemove" type="submit" class="btn btn-danger">Delete</button>
-                                                                </td>
-                                                            </tr>
-                                                            </tbody>
+                                                            <tbody></tbody>
                                                         </table>
                                                     </form>
                                                 </div>
