@@ -2,7 +2,7 @@ const sequelize = require ('sequelize')
 
 const DB_NAME = 'ipet'
 const DB_USER = 'root'
-const DB_PASS = 'bostinha18'
+const DB_PASS = 'root'
 const DB_HOST = 'localhost'
 const DB_PORT = 3306
 const DB_CONFIG = {
