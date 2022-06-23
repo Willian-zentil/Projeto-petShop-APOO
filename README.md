@@ -5,7 +5,7 @@ IPET2 é um sistema de balcão para petshops, com ele buscamos facilitar o dia a
 
 ## Preview
 
-[https://live.staticflickr.com/65535/52166459047_6841e0e300_k.jpg)]
+[https://live.staticflickr.com/65535/52166459047_6841e0e300_k.jpg]
 
 ## Usage
 
