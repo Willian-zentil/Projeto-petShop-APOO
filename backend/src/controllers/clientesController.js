@@ -30,7 +30,7 @@ class ClientesController {
             const novoCliente = await Cliente.create({name, cpf, phone})
             return res.status(201).json(novoCliente)
 
-        } catch (error) {
+        } catch (error) {   
             res.status(400).json("Não foi possivel cadastrar o cliente")
         }
     }

@@ -1,39 +1,136 @@
 //cadastra agendamento
 function cadAgendamento(){
-    event.preventDefault();
-        
-    let idAgenda = document.getElementById("idAgenda").value
-    let dataAgenda = document.getElementById("dataAgenda").value
-    let tipoPagAgenda = document.getElementById("tipoPagAgenda").value 
-    let typeAgenda = document.getElementById("typeAgenda").value 
-    let serviceAgenda = document.getElementById("serviceAgenda").value 
-    let idClientAgenda = document.getElementById("idClientAgenda").value 
 
-    body = {
-        "agendamentoId": idAgenda,
-        "agendamentoDate": dataAgenda,
-        "agendamentoTypePayment": tipoPagAgenda,
-        "agendamentoTypeService": typeAgenda,
-        "agendamentoValueService": serviceAgenda,
-        "clienteId": idClientAgenda
+    event.preventDefault();
+
+    //let clienteId = document.getElementById("clienteId").value
+    let petId = document.getElementById("idAgenda").value; 
+    let agendamentoDate = document.getElementById("dataAgenda").value;  
+    let agendamentoTypePayment = document.getElementById("tipoPagAgenda").value; 
+    let agendamentoTypeService = document.getElementById("typeAgenda").value;  
+    let agendamentoValueService = document.getElementById("serviceAgenda").value; 
+    let agendamentoIsPaid = document.getElementById("statusAgenda").value; 
+
+    let booleanPago;
+
+    if(agendamentoIsPaid == 'pago'){
+        booleanPago = true
+    }else if(agendamentoIsPaid == 'aguardando pagamento'){
+        booleanPago = false
     }
 
-    fazpost(body)
+    console.log("booleanPago,", booleanPago )
+
+    const options = {
+        method: 'POST',
+        body: JSON.stringify({
+            petId: petId,
+            agendamentoDate: agendamentoDate,
+            agendamentoTypePayment: agendamentoTypePayment,
+            agendamentoTypeService: agendamentoTypeService,
+            agendamentoValueService: agendamentoValueService,
+            agendamentoIsPaid: booleanPago
+
+        }),
+        headers: {'Content-Type': 'application/json'}
+    }
+    console.log(fetchApiPost(options, 'agendamentos'))
 
     document.getElementById("idAgenda").value=''; 
     document.getElementById("dataAgenda").value=''; 
-    document.getElementById("clienteName").value=''; 
     document.getElementById("tipoPagAgenda").value=''; 
     document.getElementById("typeAgenda").value=''; 
     document.getElementById("serviceAgenda").value=''; 
-    document.getElementById("idClientAgenda").value=''; 
+}
+
+//buscar agedamento 
+function buscaAgenda(){
+    event.preventDefault();
+
+    fetch('http://localhost:4000/agendamentos/')
+    .then(resp => resp.json())
+    .then(function(resp) {
+        let list = document.querySelector('.card-body.results.p-4 tbody')
+
+        while (list.hasChildNodes()) {
+            list.removeChild(list.firstChild);
+          }
+
+        document.querySelector('.card-body.results.p-4').classList.remove('d-none')
+
+        resp.forEach(resp => {
+            const html = htmlToElement(`
+            <tr>
+                <td scope="row" id="listaClientId">${resp.Pet.id}</td>
+                <td id="listaTipoServ">${resp.agendamentoTypeService}</td>
+                <td scope="row" id="listaVal">${resp.agendamentoValueService}</td>
+                <td id="listaTipoPag">${resp.agendamentoTypePayment}</td>
+                <td id="listaTipoPag">${resp.agendamentoIsPaid}</td>
+                <td id="listaData">${resp.agendamentoDate}</td>
+                <td>
+                    <button id="listaPetRemove" onclick="deletAgenda(this)" type="submit" class="btn btn-danger" data-id-type="${resp.Pet.id}">Delete</button>
+                </td>
+            </tr>`)
+            document.querySelector('.card-body.results.p-4 tbody').append(html)
+        });
+    })
+}
+
+//deletar agedamento
+function deletAgenda (id){
+    event.preventDefault();
+    let clientId = id.getAttribute("data-id-type");
+
+    const options = {
+        method: 'DELETE',
+        body: JSON.stringify({
+            id: clientId
+        }),
+        headers: {'Content-Type': 'application/json'}
+    }
+
+    fetchApiDelete(options, clientId, 'agendamentos')
+}
+
+function atualizaAgendamento(){
+
+    event.preventDefault();
+
+    let petId = document.getElementById("idPetAtualizaAgenda").value; 
+    let agendamentoDate = document.getElementById("dataAtualizaAgenda").value;  
+    let agendamentoTypePayment = document.getElementById("tipoAtualizaPagAgenda").value; 
+    let agendamentoTypeService = document.getElementById("typeAtualizaAgenda").value;  
+    let agendamentoValueService = document.getElementById("serviceAtualizaAgenda").value; 
+    let agendamentoIsPaid = document.getElementById("agendamentoIsPaid").value; 
+
+    if(agendamentoIsPaid == 'pago'){
+        booleanPago = true
+    }else if(agendamentoIsPaid == 'aguardando pagamento'){
+        booleanPago = false
+    }
+
+
+    const options = {
+        method: 'PUT',
+        body: JSON.stringify({
+            petId: petId,
+            agendamentoDate: agendamentoDate,
+            agendamentoTypePayment: agendamentoTypePayment,
+            agendamentoTypeService: agendamentoTypeService,
+            agendamentoValueService: agendamentoValueService,
+            agendamentoIsPaid: booleanPago
+
+        }),
+        headers: {'Content-Type': 'application/json'}
+    }
+ 
+    fetchApiPost(options, 'agendamentos/'+petId)
 }
 
 //cadastra cliente
 function cadCliente(){
     event.preventDefault();
 
-    //let clienteId = document.getElementById("clienteId").value
     let clienteName = document.getElementById("clienteName").value
     let clienteCpf = document.getElementById("clienteCpf").value 
     let clientePhone = document.getElementById("clientePhone").value 
@@ -144,7 +241,6 @@ function htmlToElement(html) {
 function cadPet(){
     event.preventDefault();
 
-    //let clienteId = document.getElementById("clienteId").value
     let clienteId = document.getElementById("clientPetId").value
     let namePet = document.getElementById("petName").value 
 
